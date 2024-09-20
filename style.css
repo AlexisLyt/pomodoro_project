@@ -1,12 +1,68 @@
+
 body {
     background-color: #f94449;
 }
 
 h1 {
     color: white;
+    font-size: clamp(32px, 5vw, 60px);
     font-family: 'Montserrat';
+    margin-top: 3%;
+    margin-bottom: 5%;
 }
 
 .titre {
     text-align: center;
+}
+
+.centrer_chrono {
+    margin-top: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pause_travail {
+    font-family: 'Montserrat';
+    font-size: clamp(10px, 2.5vw, 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    display: inline-block;
+    margin : 0 2.5vw;
+    padding: 15px;
+    border : black, 2px, solid;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+}
+
+#travail {
+    background-color: #acdf87;
+}
+
+#pause {
+    background-color: #c30010;
+}
+
+.chrono {
+    background-color: #f05e23;
+    font-family: 'Roboto';
+    width: 300px;              
+    height: 300px;             
+    display: flex;             
+    justify-content: center;   
+    align-items: center;       
+    border: 2px solid black;       
+    border: 2px solid black;   
+    border-radius: 50%;       
+    box-shadow: 0 0 30px black; 
+}
+
+#temps {
+    margin: 0;
+    font-size: 75px;
+    background-color: #f05e23;
 }
