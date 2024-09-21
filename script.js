@@ -4,9 +4,14 @@ function enleverUneSeconde () {
     if (tps.textContent.slice(-2) != "00") {
         let h_m = tps.textContent.split(":");
         if (h_m[1] <= 10) {
-            h_m[1] = "0"+ h_m[1].slice(-1) - 1;
-            let minutes = ['0',h_m[1]];
-            h_m[1] = minutes.join("");
+            if (h_m[1].slice(-1) == 0) {
+                let minutes = ['0','9'];
+                h_m[1] = minutes.join("");
+            } else {
+                h_m[1] = h_m[1].slice(-1) - 1;
+                let minutes = ['0',h_m[1]];
+                h_m[1] = minutes.join("");
+            }
         } else {
             h_m[1] = h_m[1] - 1;
         }
