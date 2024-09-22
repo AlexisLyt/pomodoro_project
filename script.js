@@ -50,8 +50,19 @@ function pauseToTravail () {
     document.getElementById("pause").style.backgroundColor = "#c30010";
 }
 
+
+let intervalle;
 function startTimer () {
     let btn = document.getElementById("bouton_start");
     btn.disabled = true;
-    setInterval(enleverUneSeconde,1000);
+    document.getElementById("bouton_reset").disabled = false;
+    intervalle = setInterval(enleverUneSeconde,1000);
+}
+
+function reinitialiser () {
+    document.getElementById("temps").textContent = "25:00";
+    document.getElementById("travail").style.backgroundColor = "#acdf87";
+    document.getElementById("pause").style.backgroundColor = "#c30010";
+    document.getElementById("bouton_start").disabled = false;
+    clearInterval(intervalle);
 }

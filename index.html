@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/2cadc35be3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,12 +26,17 @@
             </div>
             <div class="centrer_chrono">
                 <div class="chrono">
-                    <h2 id="temps">0:20</h2>
+                    <h2 id="temps">25:00</h2>
                 </div>
             </div>
         </div>
         <div class="lancer_chrono">
-            <button onclick="startTimer()" id="bouton_start"> START</button>
+            <button onclick="startTimer()" id="bouton_start">
+                <i class="fa-regular fa-circle-play"></i>
+            </button>
+            <button onclick="reinitialiser()" id="bouton_reset" disabled="true">
+                <i class="fa-regular fa-circle-stop"></i>
+            </button>
         </div>
     </main>
 </body>

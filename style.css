@@ -65,3 +65,22 @@ h3 {
     font-size: 75px;
     background-color: #f05e23;
 }
+
+.lancer_chrono {
+    text-align: center;
+    margin-top: 7vh;
+}
+
+#bouton_start {
+    background: none;
+    scale: 500%;
+    margin-right: 30px;
+    border: none;
+}
+
+#bouton_reset {
+    background: none;
+    scale: 500%;
+    margin-left: 30px;
+    border: none;
+}
