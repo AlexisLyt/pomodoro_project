@@ -1,5 +1,12 @@
 function enleverUneSeconde () {
     let tps = document.getElementById('temps');
+    if (tps.textContent == "0:00"){
+        if (document.getElementById("travail").style.backgroundColor = "#acdf87") {
+            travailToPause();
+        } else if (document.getElementById("travail").style.backgroundColor = "#c30010") {
+            pauseToTravail();
+        }
+    }
     let tpsModifie;
     if (tps.textContent.slice(-2) != "00") {
         let h_m = tps.textContent.split(":");
@@ -23,6 +30,24 @@ function enleverUneSeconde () {
         tpsModifie = h_m.join(":");
     }
     tps.textContent = tpsModifie;
+}
+
+
+
+function travailToPause () {
+    var bip = new Audio("https://download.dashmap.live/1de9ad7c-5237-41b5-a9e7-ced0356aa235/32642695_vK227VA.mp3");
+    bip.play();
+    document.getElementById("temps").textContent = "5:00";
+    document.getElementById("travail").style.backgroundColor = "#c30010";
+    document.getElementById("pause").style.backgroundColor = "#acdf87";
+}
+
+function pauseToTravail () {
+    var bip = new Audio("https://download.dashmap.live/1de9ad7c-5237-41b5-a9e7-ced0356aa235/32642695_vK227VA.mp3");
+    bip.play();
+    document.getElementById("temps").textContent = "25:00";
+    document.getElementById("travail").style.backgroundColor = "#acdf87";
+    document.getElementById("pause").style.backgroundColor = "#c30010";
 }
 
 function startTimer () {
