@@ -64,5 +64,6 @@ function reinitialiser () {
     document.getElementById("travail").style.backgroundColor = "#acdf87";
     document.getElementById("pause").style.backgroundColor = "#c30010";
     document.getElementById("bouton_start").disabled = false;
+    document.getElementById("bouton_reset").disabled = true;
     clearInterval(intervalle);
 }
