@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="a pomodoro timer">
     <script defer src="script.js"></script>
     <script src="https://kit.fontawesome.com/2cadc35be3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
@@ -37,6 +38,30 @@
             <button onclick="reinitialiser()" id="bouton_reset" disabled>
                 <i class="fa-regular fa-circle-stop"></i>
             </button>
+        </div>
+        <div>
+            <button id="parametres" onclick="afficheParametres()">
+                <i class="fa-solid fa-gear" style="color: #000000;" id="icone_param"></i>
+            </button>
+        </div>
+        <div id="popup_form" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="fermeParametres()">&times;</span>
+                <h2>Parametres</h2>
+                <form id="formulaire">
+                    <div class="p_travail">
+                        <label for="minutes_travail">Temps de travail : </label>
+                        <input type="number" max="90" min="10" id="minutes_travail" name="minutes_travail" placeholder="min">
+                        <input type="number" max="59"  min="0" id="secondes_travail" name="secondes_travail" placeholder="sec">
+                    </div>
+                    <div class="p_pause">
+                        <label for="minutes_pause">Temps de pause : </label>
+                        <input type="number" max="15" min="1" id="minutes_pause" name="secondes_pause" placeholder="min">
+                        <input type="number" max="59" min="0" id="secondes_pause" name="secondes_pause" placeholder="sec">
+                    </div>
+                    <button type="button" id="valider" onclick="checkInputs()">Valider</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>
