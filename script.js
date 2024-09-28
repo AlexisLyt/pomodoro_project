@@ -2,17 +2,22 @@ let loc_min_t;
 let loc_sec_t;
 let loc_sec_p;
 let loc_min_p;
+let popup = document.getElementById("popup_form");
+let param = document.getElementById("parametres");
+let close = document.getElementsByClassName("close")[0];
 if (localStorage.getItem("minutesTravail") == null) {
     loc_min_t = 25;
 } else {
     loc_min_t = localStorage.getItem("minutesTravail");
 }
 
+
 if (localStorage.getItem("secondesTravail") == null) {
-    loc_sec_t = 0;
+    loc_sec_t = "00";
 } else {
     loc_sec_t = localStorage.getItem("secondesTravail");
 }
+
 
 if (localStorage.getItem("minutesPause") == null) {
     loc_min_p = 5;
@@ -20,14 +25,17 @@ if (localStorage.getItem("minutesPause") == null) {
     loc_min_p = localStorage.getItem("minutesPause");
 }
 
+
 if (localStorage.getItem("secondesPause") == null) {
-    loc_sec_p = 0;
+    loc_sec_p = "00";
 } else {
     loc_sec_p = localStorage.getItem("secondesPause");
 }
+
+
 let loc_temps_travail = [loc_min_t, loc_sec_t];
 let loc_temps_pause = [loc_min_p, loc_sec_p];
-document.getElementById("temps").textContent = loc_temps.join(":")
+document.getElementById("temps").textContent = loc_temps_travail.join(":")
 
 function enleverUneSeconde () {
     let tps = document.getElementById('temps');
@@ -99,11 +107,8 @@ function reinitialiser () {
     clearInterval(intervalle);
 }
 
-let popup = document.getElementById("popup_form");
-let param = document.getElementById("parametres");
-let close = document.getElementsByClassName("close")[0];
-
 function afficheParametres () {
+    console.log("affiche")
     popup.style.display = "block";
 }
 function fermeParametres () {
