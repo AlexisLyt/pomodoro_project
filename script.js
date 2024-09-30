@@ -1,3 +1,4 @@
+let phase_actuelle;
 let loc_min_t;
 let loc_sec_t;
 let loc_sec_p;
@@ -18,6 +19,10 @@ if (localStorage.getItem("secondesTravail") == null) {
     loc_sec_t = localStorage.getItem("secondesTravail");
 }
 
+if (localStorage.getItem("secondesTravail") == 0) {
+    loc_sec_t = "00";
+}
+
 
 if (localStorage.getItem("minutesPause") == null) {
     loc_min_p = 5;
@@ -32,17 +37,22 @@ if (localStorage.getItem("secondesPause") == null) {
     loc_sec_p = localStorage.getItem("secondesPause");
 }
 
+if (localStorage.getItem("secondesPause") == 0) {
+    loc_sec_p = "00";
+}
+
 
 let loc_temps_travail = [loc_min_t, loc_sec_t];
 let loc_temps_pause = [loc_min_p, loc_sec_p];
 document.getElementById("temps").textContent = loc_temps_travail.join(":")
+phase_actuelle = "travail";
 
 function enleverUneSeconde () {
     let tps = document.getElementById('temps');
     if (tps.textContent == "0:00"){
-        if (document.getElementById("travail").style.backgroundColor = "#acdf87") {
+        if (phase_actuelle == "travail") {
             travailToPause();
-        } else if (document.getElementById("travail").style.backgroundColor = "#c30010") {
+        } else {
             pauseToTravail();
         }
     }
@@ -79,6 +89,7 @@ function travailToPause () {
     document.getElementById("temps").textContent = loc_temps_pause.join(":");
     document.getElementById("travail").style.backgroundColor = "#c30010";
     document.getElementById("pause").style.backgroundColor = "#acdf87";
+    phase_actuelle = "pause"
 }
 
 function pauseToTravail () {
@@ -87,6 +98,7 @@ function pauseToTravail () {
     document.getElementById("temps").textContent = loc_temps_travail.join(":");
     document.getElementById("travail").style.backgroundColor = "#acdf87";
     document.getElementById("pause").style.backgroundColor = "#c30010";
+    phase_actuelle = "travail"
 }
 
 
@@ -104,11 +116,11 @@ function reinitialiser () {
     document.getElementById("pause").style.backgroundColor = "#c30010";
     document.getElementById("bouton_start").disabled = false;
     document.getElementById("bouton_reset").disabled = true;
+    phase_actuelle = "travail"
     clearInterval(intervalle);
 }
 
 function afficheParametres () {
-    console.log("affiche")
     popup.style.display = "block";
 }
 function fermeParametres () {
@@ -145,7 +157,6 @@ function checkInputs () {
         allGood = false
     }
 
-
     if (min_tr < 10 || min_tr > 90) {
         allGood = false;
         alert("Les miniutes de travail doivent être comprises entre 10 et 90");
@@ -160,6 +171,12 @@ function checkInputs () {
     if (sec_pa < 0 || sec_tr > 59) {
         alert("Les secondes de pause doivent être comprises entre 0 et 59");
     }
+
+    if (min_tr < min_pa) {
+        alert("Vous ne pouvez pas travailler moins que votre tepmps de pause")
+        allGood = false
+    }
+
     if (allGood == true) {
         formEnLocalStorage();
     }
@@ -167,10 +184,10 @@ function checkInputs () {
 
 function formEnLocalStorage() {
     alert ("Parametres sauvgardés !");
-    let min_tr = document.getElementById("minutes_travail").value;
-    let sec_tr = document.getElementById("secondes_travail").value;
-    let min_pa = document.getElementById("minutes_pause").value;
-    let sec_pa = document.getElementById("secondes_pause").value;
+    let min_tr = Number(document.getElementById("minutes_travail").value);
+    let sec_tr = Number(document.getElementById("secondes_travail").value);
+    let min_pa = Number(document.getElementById("minutes_pause").value);
+    let sec_pa = Number(document.getElementById("secondes_pause").value);
     localStorage.setItem("minutesTravail", min_tr);
     localStorage.setItem("secondesTravail", sec_tr);
     localStorage.setItem("minutesPause", min_pa);
