@@ -15,7 +15,7 @@ h1 {
 }
 
 .centrer_chrono {
-    margin-top: 13vh;
+    margin-top: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +23,7 @@ h1 {
 
 .pause_travail {
     font-family: 'Montserrat';
-    font-size: clamp(10px, 2.5vw, 30px);
+    font-size: clamp(16px, 2.5vw, 30px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +49,8 @@ h3 {
 .chrono {
     background-color: #f05e23;
     font-family: 'Roboto';
-    width: 50vh;              
-    height: 50vh;             
+    width: 40vh;              
+    height: 40vh;             
     display: flex;             
     justify-content: center;   
     align-items: center;       
@@ -156,4 +156,8 @@ input {
 #valider {
     font-size: 16px;
     padding: 5px;
+}
+
+label {
+    margin-bottom: 10px;
 }

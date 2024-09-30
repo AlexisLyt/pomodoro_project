@@ -122,11 +122,30 @@ window.onclick = function(event) {
 }
 
 function checkInputs () {
-    let min_tr = document.getElementById("minutes_travail").value;
-    let sec_tr = document.getElementById("secondes_travail").value;
-    let min_pa = document.getElementById("minutes_pause").value;
-    let sec_pa = document.getElementById("secondes_pause").value;
+    let min_tr = Number(document.getElementById("minutes_travail").value);
+    let sec_tr = Number(document.getElementById("secondes_travail").value);
+    let min_pa = Number(document.getElementById("minutes_pause").value);
+    let sec_pa = Number(document.getElementById("secondes_pause").value);
     let allGood = true;
+
+    if (!Number.isInteger(min_tr)) {
+        alert ("Les minutes de travail doivent être entières")
+        allGood = false
+    }
+    if (!Number.isInteger(sec_tr)) {
+        alert ("Les secondes de travail doivent être entières")
+        allGood = false
+    }
+    if (!Number.isInteger(min_pa)) {
+        alert ("Les minutes de pause doivent être entières")
+        allGood = false
+    }
+    if (!Number.isInteger(sec_pa)) {
+        alert ("Les secondes de pause doivent être entières")
+        allGood = false
+    }
+
+
     if (min_tr < 10 || min_tr > 90) {
         allGood = false;
         alert("Les miniutes de travail doivent être comprises entre 10 et 90");
