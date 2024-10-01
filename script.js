@@ -1,3 +1,4 @@
+/* Initailisation du timer au milieu*/
 let phase_actuelle;
 let loc_min_t;
 let loc_sec_t;
@@ -6,6 +7,9 @@ let loc_min_p;
 let popup = document.getElementById("popup_form");
 let param = document.getElementById("parametres");
 let close = document.getElementsByClassName("close")[0];
+
+/* Check si il y a des variables déja enregistrées*/
+
 if (localStorage.getItem("minutesTravail") == null) {
     loc_min_t = 25;
 } else {
@@ -41,12 +45,16 @@ if (localStorage.getItem("secondesPause") == 0) {
     loc_sec_p = "00";
 }
 
+/* Affichage du temps à l'initialisation*/
 
 let loc_temps_travail = [loc_min_t, loc_sec_t];
 let loc_temps_pause = [loc_min_p, loc_sec_p];
 document.getElementById("temps").textContent = loc_temps_travail.join(":")
 phase_actuelle = "travail";
 
+/**
+ * Enleve une seconde au timer, regarde aussi si on est à la fin d'une phase
+ */
 function enleverUneSeconde () {
     let tps = document.getElementById('temps');
     if (tps.textContent == "0:00"){
@@ -82,7 +90,9 @@ function enleverUneSeconde () {
 }
 
 
-
+/**
+ * Passe de la phase de travail à celle de pause
+ */
 function travailToPause () {
     var bip = new Audio("https://download.dashmap.live/1de9ad7c-5237-41b5-a9e7-ced0356aa235/32642695_vK227VA.mp3");
     bip.play();
@@ -91,7 +101,9 @@ function travailToPause () {
     document.getElementById("pause").style.backgroundColor = "#acdf87";
     phase_actuelle = "pause"
 }
-
+/**
+ * Passe de la phase de pasue à celle de travail
+ */
 function pauseToTravail () {
     var bip = new Audio("https://download.dashmap.live/1de9ad7c-5237-41b5-a9e7-ced0356aa235/32642695_vK227VA.mp3");
     bip.play();
@@ -103,13 +115,18 @@ function pauseToTravail () {
 
 
 let intervalle;
+/**
+ * Déclenche le timer
+ */
 function startTimer () {
     let btn = document.getElementById("bouton_start");
     btn.disabled = true;
     document.getElementById("bouton_reset").disabled = false;
     intervalle = setInterval(enleverUneSeconde,1000);
 }
-
+/**
+ * Réinitialise le timer et remet au début de la phase de travail
+ */
 function reinitialiser () {
     document.getElementById("temps").textContent = loc_temps_travail.join(":");
     document.getElementById("travail").style.backgroundColor = "#acdf87";
@@ -119,20 +136,30 @@ function reinitialiser () {
     phase_actuelle = "travail"
     clearInterval(intervalle);
 }
-
+/**
+ * Affiche la popup des paramètres
+ */
 function afficheParametres () {
     popup.style.display = "block";
 }
+/**
+ * Ferme la popup des paramètres quand l'utilisateur clique sur la croix
+ */
 function fermeParametres () {
     popup.style.display = "none";
 }
-
+/**
+ * Ferme la popup des paramètres quand l'utilisateur clique à coté
+ * @param {} event 
+ */
 window.onclick = function(event) {
     if (event.target == popup) {
         popup.style.display = "none";
     }
 }
-
+/**
+ * Vérifie les valeurs que rentre l'utilisateur
+ */
 function checkInputs () {
     let min_tr = Number(document.getElementById("minutes_travail").value);
     let sec_tr = Number(document.getElementById("secondes_travail").value);
@@ -159,7 +186,7 @@ function checkInputs () {
 
     if (min_tr < 10 || min_tr > 90) {
         allGood = false;
-        alert("Les miniutes de travail doivent être comprises entre 10 et 90");
+        alert("Les minutes de travail doivent être comprises entre 10 et 90");
     }
     if (min_pa < 1 || min_pa > 15) {
         allGood = false;
@@ -173,7 +200,7 @@ function checkInputs () {
     }
 
     if (min_tr < min_pa) {
-        alert("Vous ne pouvez pas travailler moins que votre tepmps de pause")
+        alert("Vous ne pouvez pas travailler moins que votre temps de pause")
         allGood = false
     }
 
@@ -181,7 +208,9 @@ function checkInputs () {
         formEnLocalStorage();
     }
 }
-
+/**
+ * Enregistre les valeurs du formulaire dans le Local Storage
+ */
 function formEnLocalStorage() {
     alert ("Parametres sauvgardés !");
     let min_tr = Number(document.getElementById("minutes_travail").value);

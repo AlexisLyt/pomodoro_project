@@ -18,48 +18,53 @@
 </head>
 <body>
     <div class="titre">
-        <h1>POMODORO TIMER</h1>
+        <h1>POMODORO TIMER</h1> <!-- Titre principal-->
     </div>
     <main>
         <div class="cadre_central">
             <div class="pause_travail">
-                <h3 id="travail">Travail</h3> <h3 id="pause">Pause</h3>
+                <h3 id="travail">Travail</h3> <h3 id="pause">Pause</h3> <!-- Infos sur la phase en cours-->
             </div>
             <div class="centrer_chrono">
                 <div class="chrono">
-                    <h2 id="temps">25:00</h2>
+                    <h2 id="temps">25:00</h2> <!-- Timer central-->
                 </div>
             </div>
         </div>
         <div class="lancer_chrono">
-            <button aria-label="start" onclick="startTimer()" id="bouton_start">
+            <button aria-label="start" onclick="startTimer()" id="bouton_start"> <!-- Bouton qui démarre le timer-->
                 <i class="fa-regular fa-circle-play"></i>
             </button>
-            <button aria-label="reset" onclick="reinitialiser()" id="bouton_reset" disabled>
+            <button aria-label="reset" onclick="reinitialiser()" id="bouton_reset" disabled> <!-- Bouton qui arrête le timer-->
                 <i class="fa-regular fa-circle-stop"></i>
             </button>
         </div>
         <div>
-            <button aria-label="parametres"  id="parametres" onclick="afficheParametres()">
+            <button aria-label="parametres"  id="parametres" onclick="afficheParametres()"> <!-- Bouton qui ouvre les paramètres-->
                 <i class="fa-solid fa-gear" style="color: #000000;" id="icone_param"></i>
             </button>
         </div>
+
+        <!-- Popup des paramètres-->
+
         <div id="popup_form" class="popup">
             <div class="popup-content">
                 <span class="close" onclick="fermeParametres()">&times;</span>
                 <h2>Parametres</h2>
                 <form id="formulaire">
                     <div class="p_travail">
+                        <!-- Entrée du temps de travail pour l'utilisateur-->
                         <label for="minutes_travail">Temps de travail : </label>
                         <input type="number" max="90" min="10" id="minutes_travail" name="minutes_travail" placeholder="min" >
                         <input type="number" max="59"  min="0" id="secondes_travail" name="secondes_travail" placeholder="sec" >
                     </div>
                     <div class="p_pause">
+                        <!-- Entrée du temps de pause pour l'utilisateur-->
                         <label for="minutes_pause">Temps de pause : </label>
                         <input type="number" max="15" min="1" id="minutes_pause" name="secondes_pause" placeholder="min" >
                         <input type="number" max="59" min="0" id="secondes_pause" name="secondes_pause" placeholder="sec" >
                     </div>
-                    <button  aria-label="valider"  type="button" id="valider" onclick="checkInputs()">Valider</button>
+                    <button  aria-label="valider"  type="button" id="valider" onclick="checkInputs()">Valider</button> <!-- Bouton de validation des paramètres-->
                 </form>
             </div>
         </div>
