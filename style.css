@@ -29,8 +29,9 @@ h1 {
     justify-content: center;
 }
 
-h3 {
+p {
     display: inline-block;
+    font-weight: bold;
     margin : 0 2.5vw;
     padding: 15px;
     border : black 2px solid;
