@@ -1,3 +1,5 @@
+/* final version*/
+
 /* Initailisation du timer au milieu*/
 let phase_actuelle;
 let loc_min_t;
@@ -186,7 +188,7 @@ function checkInputs () {
 
     if (min_tr < 10 || min_tr > 90) {
         allGood = false;
-        alert("Les minutes de travail doivent être comprises entre 10 et 90");
+        alert("Les miniutes de travail doivent être comprises entre 10 et 90");
     }
     if (min_pa < 1 || min_pa > 15) {
         allGood = false;
@@ -200,7 +202,7 @@ function checkInputs () {
     }
 
     if (min_tr < min_pa) {
-        alert("Vous ne pouvez pas travailler moins que votre temps de pause")
+        alert("Vous ne pouvez pas travailler moins que votre tepmps de pause")
         allGood = false
     }
 
@@ -209,7 +211,7 @@ function checkInputs () {
     }
 }
 /**
- * Enregistre les valeurs du formulaire dans le Local Storage
+ * Enregistre les valeurs du formulaire dans le Local Storagele
  */
 function formEnLocalStorage() {
     alert ("Parametres sauvgardés !");
